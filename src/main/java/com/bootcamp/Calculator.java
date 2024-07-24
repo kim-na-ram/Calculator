@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Calculator {
-    private static Queue<Integer> resultQueue = new LinkedList<>();
+    private static Queue<Integer> resultQueue;
 
     public Queue<Integer> getResultQueue() {
         return resultQueue;
@@ -12,6 +12,10 @@ public class Calculator {
 
     public void setResultQueue(Queue<Integer> resultQueue) {
         Calculator.resultQueue = resultQueue;
+    }
+
+    public Calculator() {
+        resultQueue = new LinkedList<>();
     }
 
     public int calculate(int a, int b, char op) {
