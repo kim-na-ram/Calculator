@@ -1,22 +1,22 @@
 package com.bootcamp;
 
-import java.util.Queue;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Calculator calculator = new Calculator();
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+        CircleCalculator circleCalculator = new CircleCalculator();
 
         while (true) {
             System.out.println("연산 종류를 골라주세요.\n1) 사칙연산\n2) 원의 넓이 구하기");
             int opType = scanner.nextInt();
 
             if(opType == 1) {
-                calculateBasicOperations(calculator);
+                calculateBasicOperations(arithmeticCalculator);
             } else {
-                calculateCircleArea(calculator);
+                calculateCircleArea(circleCalculator);
             }
 
             String answer;
@@ -28,7 +28,7 @@ public class App {
         }
     }
 
-    public static void calculateBasicOperations(Calculator calculator) {
+    public static void calculateBasicOperations(ArithmeticCalculator calculator) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("첫 번째 숫자를 입력하세요 : ");
@@ -40,7 +40,7 @@ public class App {
         char operator = scanner.next().charAt(0);
 
         try {
-            int result = calculator.calculate(num1, num2, operator);
+            double result = calculator.calculate(num1, num2, operator);
             System.out.println("결과 : " + result);
 
             String answer;
@@ -60,21 +60,21 @@ public class App {
         }
     }
 
-    public static void calculateCircleArea(Calculator calculator) {
+    public static void calculateCircleArea(CircleCalculator calculator) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("반지름을 입력하세요 : ");
         int r = scanner.nextInt();
 
         try {
-            double result = calculator.calculateCircleArea(r);
+            double result = calculator.calculate(r);
             System.out.println("결과 : " + result);
 
             String answer;
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             answer = scanner.next();
             if (answer.equals("inquiry")) {
-                calculator.inquiryCircleAreaResults();
+                calculator.inquiryResults();
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
