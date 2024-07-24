@@ -3,9 +3,12 @@ package com.bootcamp;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    // Scanner 는 main 메서드 외에도 사용되므로 전역변수로 선언
+    // 인스턴스 멤버는 static 메서드 내에 사용할 수 없으므로 static 선언
+    // App 클래스 전역에서 사용되는 scanner 는 한 번만 초기화되도록 final 선언
+    public static final Scanner scanner = new Scanner(System.in);
 
+    public static void main(String[] args) {
         ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
         CircleCalculator circleCalculator = new CircleCalculator();
 
@@ -29,8 +32,6 @@ public class App {
     }
 
     public static void calculateBasicOperations(ArithmeticCalculator calculator) {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.print("첫 번째 숫자를 입력하세요 : ");
         int num1 = scanner.nextInt();
         System.out.print("두 번째 숫자를 입력하세요 : ");
@@ -50,19 +51,13 @@ public class App {
                 calculator.removeResult();
             }
 
-            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-            answer = scanner.next();
-            if (answer.equals("inquiry")) {
-                calculator.inquiryResults();
-            }
+            printInquiry(calculator);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     public static void calculateCircleArea(CircleCalculator calculator) {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.print("반지름을 입력하세요 : ");
         int r = scanner.nextInt();
 
@@ -70,14 +65,18 @@ public class App {
             double result = calculator.calculate(r);
             System.out.println("결과 : " + result);
 
-            String answer;
-            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-            answer = scanner.next();
-            if (answer.equals("inquiry")) {
-                calculator.inquiryResults();
-            }
+            printInquiry(calculator);
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public static void printInquiry(Calculator calculator) {
+        String answer;
+        System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+        answer = scanner.next();
+        if (answer.equals("inquiry")) {
+            calculator.inquiryResults();
         }
     }
 }

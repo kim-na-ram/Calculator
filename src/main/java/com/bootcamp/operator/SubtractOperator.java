@@ -1,8 +1,10 @@
 package com.bootcamp.operator;
 
-public class SubtractOperator {
+public class SubtractOperator extends Operator {
     public SubtractOperator() {}
-    public int operate(int a, int b) {
+
+    @Override
+    public double operate(int a, int b) {
         return a - b;
     }
 }

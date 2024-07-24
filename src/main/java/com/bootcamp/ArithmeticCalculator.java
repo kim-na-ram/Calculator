@@ -1,9 +1,6 @@
 package com.bootcamp;
 
-import com.bootcamp.operator.AddOperator;
-import com.bootcamp.operator.DivideOperator;
-import com.bootcamp.operator.MultiplyOperator;
-import com.bootcamp.operator.SubtractOperator;
+import com.bootcamp.operator.*;
 
 import java.util.LinkedList;
 
@@ -13,6 +10,7 @@ public class ArithmeticCalculator extends Calculator {
     private final SubtractOperator subtractOperator;
     private final MultiplyOperator multiplyOperator;
     private final DivideOperator divideOperator;
+    private final ModeOperator modeOperator;
 
     public ArithmeticCalculator() {
         // 결과 저장 배열 초기화
@@ -23,6 +21,7 @@ public class ArithmeticCalculator extends Calculator {
         this.subtractOperator = new SubtractOperator();
         this.multiplyOperator = new MultiplyOperator();
         this.divideOperator = new DivideOperator();
+        this.modeOperator = new ModeOperator();
     }
 
     public double calculate(int a, int b, char op) {
@@ -35,6 +34,8 @@ public class ArithmeticCalculator extends Calculator {
             result = multiplyOperator.operate(a, b);
         } else if (op == '/') {
             result = divideOperator.operate(a, b);
+        } else if(op == '%') {
+            result = modeOperator.operate(a, b);
         } else {
             throw new CalculatorException(op + "는 잘못된 연산 기호입니다.");
         }
