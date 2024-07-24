@@ -8,6 +8,9 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        int[] resultArray = new int[10];
+        int idx = 0;
+
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요 : ");
             int num1 = scanner.nextInt();
@@ -21,14 +24,17 @@ public class App {
             switch (operator) {
                 case '+':
                     result = num1 + num2;
+                    resultArray[idx++] = result;
                     System.out.println("결과 : " + result);
                     break;
                 case '-':
                     result = num1 - num2;
+                    resultArray[idx++] = result;
                     System.out.println("결과 : " + result);
                     break;
                 case '*':
                     result = num1 * num2;
+                    resultArray[idx++] = result;
                     System.out.println("결과 : " + result);
                     break;
                 case '/':
@@ -37,6 +43,7 @@ public class App {
                         break;
                     }
                     result = num1 / num2;
+                    resultArray[idx++] = result;
                     System.out.println("결과 : " + result);
                     break;
             }
