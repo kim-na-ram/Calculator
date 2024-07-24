@@ -4,7 +4,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Calculator {
+    // Calculator 객체가 여러 개 만들어져도 공통으로 사용할 수 있도록 static 선언
     private static Queue<Integer> resultQueue;
+    private static Queue<Double> circleAreaResultQueue;
 
     public Queue<Integer> getResultQueue() {
         return resultQueue;
@@ -14,8 +16,17 @@ public class Calculator {
         Calculator.resultQueue = resultQueue;
     }
 
+    public Queue<Double> getCircleAreaResultQueue() {
+        return circleAreaResultQueue;
+    }
+
+    public void setCircleAreaResultQueue(Queue<Double> circleAreaResultQueue) {
+        Calculator.circleAreaResultQueue = circleAreaResultQueue;
+    }
+
     public Calculator() {
         resultQueue = new LinkedList<>();
+        circleAreaResultQueue = new LinkedList<>();
     }
 
     public int calculate(int a, int b, char op) {
@@ -48,4 +59,15 @@ public class Calculator {
     public void inquiryResults() {
         resultQueue.forEach(System.out::println);
     }
+
+    public double calculateCircleArea(int r) {
+        double result = Math.pow(r, 2) * Math.PI;
+        circleAreaResultQueue.offer(result);
+        return result;
+    }
+
+    public void inquiryCircleAreaResults() {
+        circleAreaResultQueue.forEach(System.out::println);
+    }
+
 }
