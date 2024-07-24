@@ -33,7 +33,7 @@ public class App {
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 answer = scanner.next();
                 if (answer.equals("inquiry")) {
-                    resultQueue.forEach(System.out::println);
+                    calculator.inquiryResults();
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());

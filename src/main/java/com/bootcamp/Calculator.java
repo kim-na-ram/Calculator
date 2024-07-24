@@ -40,4 +40,8 @@ public class Calculator {
             resultQueue.poll();
         }
     }
+
+    public void inquiryResults() {
+        resultQueue.forEach(System.out::println);
+    }
 }
