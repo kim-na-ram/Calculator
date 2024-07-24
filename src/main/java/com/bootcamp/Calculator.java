@@ -34,4 +34,10 @@ public class Calculator {
         resultQueue.add(result);
         return result;
     }
+
+    public void removeResult() {
+        if(!resultQueue.isEmpty()) {
+            resultQueue.poll();
+        }
+    }
 }
