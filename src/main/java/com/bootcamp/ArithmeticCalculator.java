@@ -1,25 +1,40 @@
 package com.bootcamp;
 
+import com.bootcamp.operator.AddOperator;
+import com.bootcamp.operator.DivideOperator;
+import com.bootcamp.operator.MultiplyOperator;
+import com.bootcamp.operator.SubtractOperator;
+
 import java.util.LinkedList;
 
 public class ArithmeticCalculator extends Calculator {
+    // 연산 수행 클래스들은 변경되지 않아야 하므로 final 선언
+    private final AddOperator addOperator;
+    private final SubtractOperator subtractOperator;
+    private final MultiplyOperator multiplyOperator;
+    private final DivideOperator divideOperator;
+
     public ArithmeticCalculator() {
-        resultQueue = new LinkedList<>();
+        // 결과 저장 배열 초기화
+        this.resultQueue = new LinkedList<>();
+
+        // 연산 수행 클래스 초기화
+        this.addOperator = new AddOperator();
+        this.subtractOperator = new SubtractOperator();
+        this.multiplyOperator = new MultiplyOperator();
+        this.divideOperator = new DivideOperator();
     }
 
     public double calculate(int a, int b, char op) {
         double result;
         if (op == '+') {
-            result = a + b;
+            result = addOperator.operate(a, b);
         } else if (op == '-') {
-            result = a - b;
+            result = subtractOperator.operate(a, b);
         } else if (op == '*') {
-            result = a * b;
+            result = multiplyOperator.operate(a, b);
         } else if (op == '/') {
-            if (b == 0) {
-                throw new CalculatorException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-            }
-            result = (double) a / b;
+            result = divideOperator.operate(a, b);
         } else {
             throw new CalculatorException(op + "는 잘못된 연산 기호입니다.");
         }
