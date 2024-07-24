@@ -5,12 +5,10 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class App {
-    public static int[] resultArray;
-    public static int idx = 0;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        resultArray = new int[10];
+        Queue<Integer> resultQueue = new LinkedList<>();
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요 : ");
@@ -25,17 +23,17 @@ public class App {
             switch (operator) {
                 case '+':
                     result = num1 + num2;
-                    saveResultToArray(result);
+                    resultQueue.offer(result);
                     System.out.println("결과 : " + result);
                     break;
                 case '-':
                     result = num1 - num2;
-                    saveResultToArray(result);
+                    resultQueue.offer(result);
                     System.out.println("결과 : " + result);
                     break;
                 case '*':
                     result = num1 * num2;
-                    saveResultToArray(result);
+                    resultQueue.offer(result);
                     System.out.println("결과 : " + result);
                     break;
                 case '/':
@@ -44,28 +42,23 @@ public class App {
                         break;
                     }
                     result = num1 / num2;
-                    saveResultToArray(result);
+                    resultQueue.offer(result);
                     System.out.println("결과 : " + result);
                     break;
             }
 
-            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-            String answer = scanner.next();
+            String answer;
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            answer = scanner.next();
+            if (answer.equals("remove")) {
+                if(!resultQueue.isEmpty()) resultQueue.poll();
+            }
 
+            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+            answer = scanner.next();
             if (answer.equals("exit")) {
                 break;
             }
-        }
-    }
-
-    public static void saveResultToArray(int result) {
-        if(idx < resultArray.length -1) {
-            resultArray[idx++] = result;
-        } else {
-            for(int i = 1; i < resultArray.length; i++) {
-                resultArray[i - 1] = resultArray[i];
-            }
-            resultArray[idx] = result;
         }
     }
 }
