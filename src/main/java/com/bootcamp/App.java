@@ -5,11 +5,12 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class App {
+    public static int[] resultArray;
+    public static int idx = 0;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int[] resultArray = new int[10];
-        int idx = 0;
+        resultArray = new int[10];
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요 : ");
@@ -24,17 +25,17 @@ public class App {
             switch (operator) {
                 case '+':
                     result = num1 + num2;
-                    resultArray[idx++] = result;
+                    saveResultToArray(result);
                     System.out.println("결과 : " + result);
                     break;
                 case '-':
                     result = num1 - num2;
-                    resultArray[idx++] = result;
+                    saveResultToArray(result);
                     System.out.println("결과 : " + result);
                     break;
                 case '*':
                     result = num1 * num2;
-                    resultArray[idx++] = result;
+                    saveResultToArray(result);
                     System.out.println("결과 : " + result);
                     break;
                 case '/':
@@ -43,7 +44,7 @@ public class App {
                         break;
                     }
                     result = num1 / num2;
-                    resultArray[idx++] = result;
+                    saveResultToArray(result);
                     System.out.println("결과 : " + result);
                     break;
             }
@@ -54,6 +55,17 @@ public class App {
             if (answer.equals("exit")) {
                 break;
             }
+        }
+    }
+
+    public static void saveResultToArray(int result) {
+        if(idx < resultArray.length -1) {
+            resultArray[idx++] = result;
+        } else {
+            for(int i = 1; i < resultArray.length; i++) {
+                resultArray[i - 1] = resultArray[i];
+            }
+            resultArray[idx] = result;
         }
     }
 }
