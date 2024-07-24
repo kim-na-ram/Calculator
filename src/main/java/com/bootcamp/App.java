@@ -54,6 +54,12 @@ public class App {
                 if(!resultQueue.isEmpty()) resultQueue.poll();
             }
 
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            answer = scanner.next();
+            if (answer.equals("inquiry")) {
+                resultQueue.forEach(System.out::println);
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             answer = scanner.next();
             if (answer.equals("exit")) {
