@@ -8,7 +8,7 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         Calculator calculator = new Calculator();
-        Queue<Integer> resultQueue = Calculator.resultQueue;
+        Queue<Integer> resultQueue = calculator.getResultQueue();
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요 : ");
