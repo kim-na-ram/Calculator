@@ -1,6 +1,6 @@
-package com.bootcamp.operator;
+package com.bootcamp.calculator.operator;
 
-import com.bootcamp.CalculatorException;
+import com.bootcamp.calculator.CalculatorException;
 
 public class DivideOperator extends Operator {
     public DivideOperator() {}

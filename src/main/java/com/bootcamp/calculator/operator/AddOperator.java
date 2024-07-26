@@ -1,4 +1,4 @@
-package com.bootcamp.operator;
+package com.bootcamp.calculator.operator;
 
 public class AddOperator extends Operator {
     public AddOperator() {}
