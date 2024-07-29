@@ -4,6 +4,7 @@ import com.bootcamp.calculator.operator.Operator;
 import com.bootcamp.util.OperatorType;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class ArithmeticCalculator extends Calculator {
     public ArithmeticCalculator() {
@@ -28,6 +29,10 @@ public class ArithmeticCalculator extends Calculator {
 
     private boolean checkIsIntegerType(Double n) {
         return n.intValue() == n;
+    }
+
+    public <T extends Number> List<Number> inquiryForBiggerResults(T result) {
+        return resultQueue.stream().filter(i -> result.doubleValue() < i.doubleValue()).toList();
     }
 
     @Override

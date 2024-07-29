@@ -4,6 +4,7 @@ import com.bootcamp.calculator.ArithmeticCalculator;
 import com.bootcamp.calculator.Calculator;
 import com.bootcamp.calculator.CircleCalculator;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -50,6 +51,12 @@ public class App {
         try {
             T result = calculator.calculate(input1, input2, operator);
             System.out.println("결과 : " + result);
+
+            List<Number> list = calculator.inquiryForBiggerResults(result);
+            if(!list.isEmpty()) {
+                System.out.println("현재 결과보다 큰 결과값들 출력");
+                list.forEach(System.out::println);
+            }
 
             String answer;
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
