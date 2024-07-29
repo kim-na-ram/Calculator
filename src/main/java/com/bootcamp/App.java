@@ -17,13 +17,16 @@ public class App {
         CircleCalculator circleCalculator = new CircleCalculator();
 
         while (true) {
-            System.out.println("연산 종류를 골라주세요.\n1) 사칙연산\n2) 원의 넓이 구하기");
-            int opType = scanner.nextInt();
+            System.out.println("연산 종류를 골라주세요. (숫자만 입력)\n1) 사칙연산\n2) 원의 넓이 구하기");
+            String opType = scanner.next();
 
-            if(opType == 1) {
+            if (opType.equals("1")) {
                 calculateBasicOperations(arithmeticCalculator);
-            } else {
+            } else if (opType.equals("2")) {
                 calculateCircleArea(circleCalculator);
+            } else {
+                System.out.println("연산 종류는 1) 사칙연산 또는 2)원의 넓이 구하기만 가능합니다.");
+                continue;
             }
 
             String answer;
@@ -35,17 +38,17 @@ public class App {
         }
     }
 
-    public static void calculateBasicOperations(ArithmeticCalculator calculator) {
+    public static <T extends Number> void calculateBasicOperations(ArithmeticCalculator calculator) {
         System.out.print("첫 번째 숫자를 입력하세요 : ");
-        int num1 = scanner.nextInt();
+        double input1 = scanner.nextDouble();
         System.out.print("두 번째 숫자를 입력하세요 : ");
-        int num2 = scanner.nextInt();
+        double input2 = scanner.nextDouble();
 
         System.out.print("사칙연산 기호를 입력하세요 : ");
         char operator = scanner.next().charAt(0);
 
         try {
-            double result = calculator.calculate(num1, num2, operator);
+            T result = calculator.calculate(input1, input2, operator);
             System.out.println("결과 : " + result);
 
             String answer;

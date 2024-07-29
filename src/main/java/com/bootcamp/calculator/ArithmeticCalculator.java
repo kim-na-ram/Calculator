@@ -11,13 +11,23 @@ public class ArithmeticCalculator extends Calculator {
         this.resultQueue = new LinkedList<>();
     }
 
-    public double calculate(int a, int b, char op) {
+    public <T extends Number> T calculate(Double a, Double b, char op) {
         // OperatorType 에서 알맞는 Operator 를 반환해준다.
         Operator operator = OperatorType.findByOperatorType(op);
 
-        double result = operator.operate(a, b);
+        T result;
+        if(checkIsIntegerType(a) && checkIsIntegerType(b)) {
+            result = (T) Integer.valueOf(operator.operate(a.intValue(), b.intValue()));
+        } else {
+            result = (T) Double.valueOf(operator.operate(a, b));
+        }
+
         resultQueue.add(result);
         return result;
+    }
+
+    private boolean checkIsIntegerType(Double n) {
+        return n.intValue() == n;
     }
 
     @Override

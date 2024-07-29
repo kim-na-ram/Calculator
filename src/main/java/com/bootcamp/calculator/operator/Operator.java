@@ -1,5 +1,6 @@
 package com.bootcamp.calculator.operator;
 
 public abstract class Operator {
-    abstract public double operate(int a, int b);
+    abstract public int operate(int a, int b);
+    abstract public double operate(double a, double b);
 }
