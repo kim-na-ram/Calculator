@@ -1,9 +1,9 @@
-package com.bootcamp;
+package com.bootcamp.calculator;
 
 import java.util.Queue;
 
 public abstract class Calculator {
-    public Queue<Double> resultQueue;
+    public Queue<Number> resultQueue;
     public void removeResult() {
         if(!resultQueue.isEmpty()) {
             resultQueue.poll();

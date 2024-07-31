@@ -1,4 +1,4 @@
-package com.bootcamp;
+package com.bootcamp.calculator;
 
 public class CalculatorException extends RuntimeException {
     public CalculatorException() {
